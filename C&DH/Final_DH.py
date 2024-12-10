@@ -37,10 +37,10 @@ subsystem_dict = {
         "CMD04": ("SAFE_MODE", True),
     }},
     "EPS": {"name": "Electrical Power System", "commands": {
-        "CMD01": ("BATTER_CHARGE_MODE", True),  # parameter between 0 and 100
+        "CMD01": ("BATTER_CHARGE_MODE", True), 
         "CMD02": ("POWER_ON_MODULE", True),
-        "CMD03": ("POWER_OFF_MODULE", True),  # T/F
-        "CMD04": ("VOLTAGE_SETPOINT", (0, 120))  # voltage range 0-120
+        "CMD03": ("POWER_OFF_MODULE", True),  
+        "CMD04": ("VOLTAGE_SETPOINT", (0, 120)) 
     }},
     "PL1/PL2": {"name": "Payload system (and number)", "commands": {
         "CMD01": ("START_DATA_ACQUISITION", True),
