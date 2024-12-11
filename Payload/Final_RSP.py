@@ -71,7 +71,6 @@ def check_for_invalid_values(image):
         image = np.nan_to_num(image, posinf=255, neginf=0)  # Replace Inf with 255, -Inf with 0
     return image
 
-
 def radiance_to_reflectance(rgb_image, k=0.8, b=0.1):
     #Convert radiance to reflectance.
     reflectance_image = k * rgb_image + b
@@ -79,7 +78,6 @@ def radiance_to_reflectance(rgb_image, k=0.8, b=0.1):
     print("-> Radiance Converted To Reflectance...")
     print("-> Generating Reflectance Image...")
     return reflectance_image
-
 
 def rescale_to_dn(reflectance_image):
     #Rescale the reflectance image to digital numbers (DN).
@@ -91,7 +89,7 @@ def rescale_to_dn(reflectance_image):
     return dn_image
 
 #########################################################################################################
-# Utilized ChatGPT to enhance the image quality, which is something I haven't used before 
+# Utilized ChatGPT to enhance the image quality, which is something I haven't used before using the Scipy Library
 
 def apply_sharpening_filter(image):
     # Apply a sharpening filter to enhance image details.
@@ -106,7 +104,6 @@ def apply_sharpening_filter(image):
     print("-> Sharpening 8-Bit Digital Numbers Image...")
     return sharpened_image.astype(np.uint8)  # Ensure the image is in uint8 format
 
-
 def histogram_equalization(image):
     # Apply histogram equalization to enhance contrast.
     # Flatten image and calculate the histogram
@@ -117,7 +114,6 @@ def histogram_equalization(image):
     # Use linear interpolation of the CDF to map pixel values to equalized values
     image_equalized = np.interp(image.flatten(), bins[:-1], cdf_normalized * 255)
     return image_equalized.reshape(image.shape).astype(np.uint8)
-
 
 def apply_gamma_correction(image, gamma=1.2):
     # Apply gamma correction to brighten the image.
@@ -143,7 +139,6 @@ def save_image(image, file_name, folder_path):
     plt.axis('off')  # Hide axes for cleaner image
     plt.savefig(file_path, format='png', bbox_inches='tight', pad_inches=0)
     print(f"---> Image saved to: {file_path}")
-
 
 # Main logic
 def main():
@@ -218,7 +213,6 @@ def main():
             plt.title("Enhanced 8-Bit Digital Numbers Image")
             print("Enhanced 8-Bit Digital Numbers Image Displayed. -> ")
             plt.show()
-
 
 if __name__ == "__main__":
     main()
