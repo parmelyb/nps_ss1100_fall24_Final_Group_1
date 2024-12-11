@@ -40,7 +40,7 @@ Joshua - RSP/C&DH
 2. What was the most challenging section, and why? Feel free to provide more than one response
 if there is a difference of opinion in the group.
 
-  Joshua - The most difficult of the two subsystems was the Payload. It required several functions working together to combine the files, run conversions, generate, output and save the files while getting user input to ensure the correct files were fed into the program in the correct order. 
+  Joshua - The most difficult of the two subsystems was the Payload. It required several functions working together to combine the files, run conversions, generate, output and save the files while getting user input to ensure the correct files were fed into the program in the correct order. Overall, completing both subsystems took me approximately 8 hours to complete. 
 
 
 
