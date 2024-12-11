@@ -1,5 +1,5 @@
 ################################
-#Remote Sensing Payload
+# Remote Sensing Payload
 ################################
 
 import numpy as np
@@ -12,18 +12,20 @@ from tkinter import filedialog
 
 
 def select_file():
-    #Open a file dialog to select a file and return the file path.
+    # Open a file dialog to select a file and return the file path.
     root = tk.Tk()
     root.withdraw()  # Hide the main tkinter window
     file_path = filedialog.askopenfilename(title="Select a CSV file", filetypes=[("CSV Files", "*.csv")])
     return file_path
 
+
 def get_file_path(prompt="Enter file path:"):
-    #Prompt the user to manually enter a file path.
+    # Prompt the user to manually enter a file path.
     return input(prompt)
 
+
 def load_band_data(file_path):
-    #Load band data from a CSV file, removing the first row and first column.
+    # Load band data from a CSV file, removing the first row and first column.
     try:
         # Load the CSV into a DataFrame
         df = pd.read_csv(file_path, header=None)
@@ -41,23 +43,27 @@ def load_band_data(file_path):
         print(f"Error loading the file {file_path}: {exc}")
         return None
 
+
 def check_band_dimensions(R, G, B):
-    #Check if the dimensions of the RGB bands are the same.
+    # Check if the dimensions of the RGB bands are the same.
     if R.shape == G.shape == B.shape:
-        print("[Bands have the same dimensions] -> Proceeding To Stack...")
+        print("[Bands have the same dimensions]")
+        print("-> Proceeding To Stack...")
     else:
         print(f"Band dimensions are different: R {R.shape}, G {G.shape}, B {B.shape}")
         return False
     return True
 
+
 def create_rgb_image(R, G, B):
-    #Create an RGB image by stacking R, G, and B bands.
+    # Create an RGB image by stacking R, G, and B bands.
     rgb_image = np.stack((R, G, B), axis=-1)
     print("-> Stacking RGB Images...")
     return rgb_image
 
+
 def check_for_invalid_values(image):
-    #Check and handle NaN (Not a Number) or Infinite values in the image.
+    # Check and handle NaN (Not a Number) or Infinite values in the image.
     if np.any(np.isnan(image)):
         print("Warning: Image contains NaN values!")
         image = np.nan_to_num(image, nan=0)  # Replace NaNs with 0
@@ -66,22 +72,25 @@ def check_for_invalid_values(image):
         image = np.nan_to_num(image, posinf=255, neginf=0)  # Replace Inf with 255, -Inf with 0
     return image
 
+
 def radiance_to_reflectance(rgb_image, k=0.8, b=0.1):
-    #Convert radiance to reflectance.
+    # Convert radiance to reflectance.
     reflectance_image = k * rgb_image + b
     reflectance_image = np.clip(reflectance_image, 0.0, 255)  # Clip the values to [0, 255]
     print("-> Radiance Converted To Reflectance...")
     print("-> Generating Reflectance Image...")
     return reflectance_image
 
+
 def rescale_to_dn(reflectance_image):
-    #Rescale the reflectance image to digital numbers (DN).
+    # Rescale the reflectance image to digital numbers (DN).
     # Ensure reflectance is within the range [0, 1]
     reflectance_image = np.clip(reflectance_image, 0, 100)
     # Scale to the range [0, 255] and convert to uint8 (8-bit)
     dn_image = (reflectance_image * 20).astype(np.uint8)
     print("-> Reflectance Image Rescaled To 8-Bit Digital Numbers...")
     return dn_image
+
 
 #########################################################################################################
 # Utilized ChatGPT to enhance the image quality, which is something I haven't used before using the Scipy Library
@@ -99,6 +108,7 @@ def apply_sharpening_filter(image):
     print("-> Sharpening 8-Bit Digital Numbers Image...")
     return sharpened_image.astype(np.uint8)  # Ensure the image is in uint8 format
 
+
 def histogram_equalization(image):
     # Apply histogram equalization to enhance contrast.
     # Flatten image and calculate the histogram
@@ -110,6 +120,7 @@ def histogram_equalization(image):
     image_equalized = np.interp(image.flatten(), bins[:-1], cdf_normalized * 255)
     return image_equalized.reshape(image.shape).astype(np.uint8)
 
+
 def apply_gamma_correction(image, gamma=1.2):
     # Apply gamma correction to brighten the image.
     # Normalize the image to the range [0, 1]
@@ -117,7 +128,8 @@ def apply_gamma_correction(image, gamma=1.2):
     image_gamma_corrected = np.power(image_normalized, gamma)
     # Rescale back to the range [0, 255]
     return np.clip(image_gamma_corrected * 255, 0, 255).astype(np.uint8)
-    
+
+
 #########################################################################################################
 
 def save_image(image, file_name, folder_path):
@@ -134,6 +146,7 @@ def save_image(image, file_name, folder_path):
     plt.axis('off')  # Hide axes for cleaner image
     plt.savefig(file_path, format='png', bbox_inches='tight', pad_inches=0)
     print(f"---> Image saved to: {file_path}")
+
 
 # Main logic
 def main():
@@ -208,6 +221,7 @@ def main():
             plt.title("Enhanced 8-Bit Digital Numbers Image")
             print("Enhanced 8-Bit Digital Numbers Image Displayed. -> ")
             plt.show()
+
 
 if __name__ == "__main__":
     main()
