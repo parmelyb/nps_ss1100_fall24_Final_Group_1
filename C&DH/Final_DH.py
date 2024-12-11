@@ -105,7 +105,7 @@ def parse_command(command_str):
         raise ValueError(f"Invalid command code: {command_code}")
 
     # Check if param_value is valid and convert to float
-    param_value = param_value.strip()  # Remove any extra spaces
+    param_value = param_value.strip()  
     if not param_value:
         raise ValueError(f"Invalid parameter value: '{param_value}' (must not be empty).")
 
@@ -126,8 +126,6 @@ def parse_command(command_str):
         if param_value not in param_range:
             raise ValueError(
                 f"Parameter {param_value} is not an acceptable value for command '{command_code}'. Allowed values: {param_range}.")
-
-    # Return the result
     return (subsystem_name, command_name, param_value)
 
 
