@@ -90,6 +90,8 @@ def rescale_to_dn(reflectance_image):
     print("-> Reflectance Image Rescaled To 8-Bit Digital Numbers...")
     return dn_image
 
+#########################################################################################################
+# Utilized ChatGPT to enhance the image quality, which is something I haven't used before 
 
 def apply_sharpening_filter(image):
     # Apply a sharpening filter to enhance image details.
@@ -124,7 +126,8 @@ def apply_gamma_correction(image, gamma=1.2):
     image_gamma_corrected = np.power(image_normalized, gamma)
     # Rescale back to the range [0, 255]
     return np.clip(image_gamma_corrected * 255, 0, 255).astype(np.uint8)
-
+    
+#########################################################################################################
 
 def save_image(image, file_name, folder_path):
     # Save the image to a file.
