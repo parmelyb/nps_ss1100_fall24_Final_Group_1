@@ -2,147 +2,170 @@
 #Command and Data Handling
 ################################
 
-import re
-
-# Dictionary to map subsystem codes to their full names and commands
-subsystem_dict = {
-    "RCS": {"name": "Reaction Control System", "commands": {
-        "CMD01": ("THRUST_X", (0, 60)),
-        "CMD02": ("THRUST_Y", (0, 60)),
-        "CMD03": ("THRUST_Z", (0, 60)),
-        "CMD04": ("SAFE_MODE", True),
-    }},
-    "TCS": {"name": "Thermal Control System", "commands": {
-        "CMD01": ("HEATER_ON", True),
-        "CMD02": ("HEATER_OFF", True),
-        "CMD03": ("VENT_OPEN_RADIATOR", True),
-        "CMD04": ("TEMP_SETPOINT", (-30, 60)),
-    }},
-    "ACS": {"name": "Attitude Control System", "commands": {
-        "CMD01": ("ROTATE_X", (-360, 360)),
-        "CMD02": ("ROTATE_Y", (-360, 360)),
-        "CMD03": ("ROTATE_Z", (-360, 360)),
-        "CMD04": ("SAFE_MODE", True),
-    }},
-    "CDH": {"name": "Command & Data Handling", "commands": {
-        "CMD01": ("TRANSMIT_HIGH", True),
-        "CMD02": ("TRANSMIT_LOW", True),
-        "CMD03": ("RECEIVE_MODE", True),
-        "CMD04": ("SAFE_MODE", True),
-    }},
-    "TTC": {"name": "Telemetry, Tracking & Command", "commands": {
-        "CMD01": ("TRANSMIT_MODE", True),
-        "CMD02": ("RECEIVE_MODE", True),
-        "CMD03": ("TRACKING_MODE", True),
-        "CMD04": ("SAFE_MODE", True),
-    }},
-    "EPS": {"name": "Electrical Power System", "commands": {
-        "CMD01": ("BATTER_CHARGE_MODE", True),
-        "CMD02": ("POWER_ON_MODULE", (0,1,2,3,4)),
-        "CMD03": ("POWER_OFF_MODULE", (0,1,2,3,4)),
-        "CMD04": ("VOLTAGE_SETPOINT", (0, 120))
-    }},
-    "PL1": {"name": "Payload System 1", "commands": {
-        "CMD01": ("START_DATA_ACQUISITION", True),
-        "CMD02": ("STOP_DATA_ACQUISITION", True),
-        "CMD03": ("CALIBRATE_SENSOR", True),
-        "CMD04": ("SAFE_MODE", True),
-    }},
-    "PL2": {"name": "Payload System 2", "commands": {
-        "CMD01": ("START_DATA_ACQUISITION", True),
-        "CMD02": ("STOP_DATA_ACQUISITION", True),
-        "CMD03": ("CALIBRATE_SENSOR", True),
-        "CMD04": ("SAFE_MODE", True),
-    }}
+command_dict = {
+    "Reaction Control Subsystem": {
+        "Code": "RCS",
+        "Commands": {
+            "CMD01": ['THRUST_X', (0, 60)],
+            "CMD02": ['THRUST_Y', (0, 60)],
+            "CMD03": ['THRUST_Z', (0, 60)],
+            "CMD04": ['SAFE_MODE', {0, 1}]
+        }
+    },
+    "Thermal Control Subsystem": {
+        "Code": "TCS",
+        "Commands": {
+            "CMD01": ['HEATER_ON', {0, 1}],
+            "CMD02": ['HEATER_OFF', {0, 1}],
+            "CMD03": ['VENT_OPEN_RADIATOR', {0, 1}],
+            "CMD04": ['TEMP_SETPOINT', (-30, 60)]
+        }
+    },
+    "Attitude Control Subsystem": {
+        "Code": "ACS",
+        "Commands": {
+            "CMD01": ['ROTATE_X', (-360, 360)],
+            "CMD02": ['ROTATE_Y', (-360, 360)],
+            "CMD03": ['ROTATE_Z', (-360, 360)],
+            "CMD04": ['SAFE_MODE', {0, 1}]
+        }
+    },
+    "Command & Data Handling": {
+        "Code": "CDH",
+        "Commands": {
+            "CMD01": ['TRANSMIT_HIGH', {0, 1}],
+            "CMD02": ['TRANSMIT_LOW', {0, 1}],
+            "CMD03": ['RECEIVE_MODE', {0, 1}],
+            "CMD04": ['SAFE_MODE', {0, 1}]
+        }
+    },
+    "Telemetry, Tracking, & Command": {
+        "Code": "TTC",
+        "Commands": {
+            "CMD01": ['TRANSMIT_MODE', {0, 1}],
+            "CMD02": ['RECEIVE_MODE', {0, 1}],
+            "CMD03": ['TRACKING_MODE', {0, 1}],
+            "CMD04": ['SAFE_MODE', {0, 1}]
+        }
+    },
+    "Electrical Power Subsystem": {
+        "Code": "EPS",
+        "Commands": {
+            "CMD01": ['BATTERY_CHARGE_MODE', {0, 1}],
+            "CMD02": ['POWER_ON_MODULE', {0, 1, 2, 3, 4}],
+            "CMD03": ['POWER_OFF_MODULE', {0, 1, 2, 3, 4}],
+            "CMD04": ['VOLTAGE_SETPOINT', (0, 120)]
+        }
+    },
+    "Payload System 1": {
+        "Code": "PL1",
+        "Commands": {
+            "CMD01": ['START_DATA_ACQUISITION', {0, 1}],
+            "CMD02": ['STOP_DATA_ACQUISITION', {0, 1}],
+            "CMD03": ['CALIBRATE_SENSOR', {0, 1}],
+            "CMD04": ['SAFE_MODE', {0, 1}]
+        }
+    },
+    "Payload System 2": {
+        "Code": "PL2",
+        "Commands": {
+            "CMD01": ['START_DATA_ACQUISITION', {0, 1}],
+            "CMD02": ['STOP_DATA_ACQUISITION', {0, 1}],
+            "CMD03": ['CALIBRATE_SENSOR', {0, 1}],
+            "CMD04": ['SAFE_MODE', {0, 1}]
+        }
+    }
 }
 
-# Function to validate numeric values based on command tolerance
-def is_valid_parameter(subsystem_code, command_code, param_value):
-    """Check if the parameter value is valid based on the command's tolerance."""
-    subsystem_info = subsystem_dict.get(subsystem_code)
-    if subsystem_info:
-        command_info = subsystem_info["commands"].get(command_code)
-        if command_info:
-            tolerance = command_info[1]
-            if tolerance is True:
-                return isinstance(param_value, bool)  # Expecting a boolean value (True/False)
-            if isinstance(tolerance, tuple) and len(tolerance) == 2:
-                min_val, max_val = tolerance
-                return min_val <= param_value <= max_val
-            elif isinstance(tolerance, tuple) and len(tolerance) > 2:
-                # For specific values (e.g., 0,1,2,3,4)
-                return param_value in tolerance
-    return False
 
-# Function to parse and route the command
-def parse_command(command_string):
+def parse_command(command_str):
+    # Parse the input string into parts
     try:
-        # Split command into blocks
-        blocks = command_string.split(":")
-        if len(blocks) != 3:
-            raise ValueError("Command format is incorrect. Must be 'Subsystem:CommandCode:Parameter'.")
+        subsystem_code, command_code, param_value = command_str.split(':')
+    except ValueError:
+        raise ValueError("Invalid command format. Expected 'Subsystem:CommandCode:Parameter'.")
 
-        subsystem_code = blocks[0].upper()  # Make subsystem code case-insensitive
-        command_code = blocks[1].upper()  # Make command code case-insensitive
-        param_value_str = blocks[2].strip()
+    # Convert to uppercase to handle case-insensitive input
+    subsystem_code = subsystem_code.strip().upper()
+    command_code = command_code.strip().upper()
 
-        # Check if subsystem exists
-        if subsystem_code not in subsystem_dict:
-            raise ValueError(f"Invalid subsystem code: {subsystem_code}. Valid subsystems are: {', '.join(subsystem_dict.keys())}")
+    # Validate and find the corresponding subsystem
+    subsystem_name = None
+    for subsystem, details in command_dict.items():
+        if details['Code'].upper() == subsystem_code:
+            subsystem_name = subsystem
+            break
 
-        subsystem_info = subsystem_dict[subsystem_code]
-        subsystem_name = subsystem_info["name"]
+    if not subsystem_name:
+        raise ValueError(f"Invalid subsystem code: {subsystem_code}")
 
-        # Check if command exists
-        if command_code not in subsystem_info["commands"]:
-            raise ValueError(f"Invalid command code: {command_code} for subsystem {subsystem_code}. Valid commands are: {', '.join(subsystem_info['commands'].keys())}")
+    # Validate the command code
+    commands = command_dict[subsystem_name]["Commands"]
+    if command_code not in commands:
+        raise ValueError(f"Invalid command code: {command_code}")
 
-        # Get command description and tolerance
-        command_description, tolerance = subsystem_info["commands"][command_code]
+    # Check if param_value is valid and convert to float
+    param_value = param_value.strip()  # Remove any extra spaces
+    if not param_value:
+        raise ValueError(f"Invalid parameter value: '{param_value}' (must not be empty).")
 
-        # Try to handle the parameter as either boolean or numeric
-        param_value = None
-        if tolerance is True:  # Boolean Value
-            param_value_str_lower = param_value_str.lower()
-            if param_value_str_lower == 'true':
-                param_value = True
-            elif param_value_str_lower == 'false':
-                param_value = False
-            else:
-                raise ValueError(f"Invalid parameter value: {param_value_str}. Expected 'True' or 'False'.")
-        else:  # Numeric or Specific Set of Values
-            try:
-                param_value = float(param_value_str)
-            except ValueError:
-                # If the parameter isn't numeric and tolerance is a set of values (e.g., 0,1,2,3,4)
-                if isinstance(tolerance, tuple) and len(tolerance) > 2:
-                    if param_value_str.isdigit():
-                        param_value = int(param_value_str)
-                    else:
-                        raise ValueError(f"Invalid parameter value: {param_value_str}. Must be one of {tolerance}.")
-                else:
-                    raise ValueError(f"Invalid parameter value: {param_value_str}. Must be numeric.")
+    try:
+        param_value = float(param_value)
+    except ValueError:
+        raise ValueError(f"Invalid parameter value: '{param_value}' (must be a numeric type).")
 
-        # Validate parameter within acceptable range if applicable
-        if not is_valid_parameter(subsystem_code, command_code, param_value):
-            raise ValueError(f"Parameter value {param_value} is out of tolerance for command {command_code}.")
+    # Check if the parameter is within the allowed range/set
+    command_name, param_range = commands[command_code]
+    if isinstance(param_range, tuple):
+        min_val, max_val = param_range
+        if not (min_val <= param_value <= max_val):
+            raise ValueError(
+                f"Parameter {param_value} is out of range for command '{command_code}'. Expected range: ({min_val}, {max_val}).")
+    elif isinstance(param_range, set):
+        if param_value not in param_range:
+            raise ValueError(
+                f"Parameter {param_value} is not an acceptable value for command '{command_code}'. Allowed values: {param_range}.")
 
-        # Return the tuple as requested
-        return (subsystem_name, command_description, param_value)
+    # Return the result
+    return (subsystem_name, command_name, param_value)
 
-    except ValueError as ve:
-        return f"Error: {ve}"
 
-# Interactive Input:
-while True:
-    # Take user input
-    command_input = input("Enter command (Subsystem:CommandCode:Parameter) or type 'q' to quit: ").strip()
+# Test the function with predefined test cases
+def test_predefined_inputs():
+    test_inputs = [
+        "EPS:CMD01:0",  # Valid input
+        "ACS:CMD04:-1",  # Invalid: -1 is invalid for SAFE_MODE
+        "RCS:INVALID:0",  # Invalid: 'INVALID' is not a valid command code
+    ]
 
-    # Check for exit condition
-    if command_input.lower() == 'q':
-        print("Exiting the program.")
-        break
+    print("Testing predefined inputs:")
+    for test_input in test_inputs:
+        try:
+            result = parse_command(test_input)
+            print(f"Command '{test_input}' parsed successfully: {result}")
+        except ValueError as e:
+            print(f"Error parsing command '{test_input}': {e}")
+    print("\n")
 
-    # Parse the command and display the result
-    result = parse_command(command_input)
-    print(f"Result: {result}\n")
+
+# Get user input
+def get_user_input():
+    print("Enter a command in the format 'Subsystem:CommandCode:Parameter' (e.g., 'EPS:CMD01:0'). Type 'exit' to quit.")
+    while True:
+        user_input = input("Enter command: ")
+        if user_input.lower() == "exit":
+            print("Exiting...")
+            break
+
+        try:
+            result = parse_command(user_input)
+            print(f"Command '{user_input}' parsed successfully: {result}")
+        except ValueError as e:
+            print(f"Error parsing command '{user_input}': {e}")
+
+
+# Run predefined tests
+test_predefined_inputs()
+
+# Allow user input
+get_user_input()
