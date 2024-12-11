@@ -23,3 +23,57 @@ Attitude Control Subsystem (ACS): Attitude determination and rotation calculatio
 Command and Data Handling (C&DH): Command parsing and routing.\
 Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.\
 Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
+
+
+1. What was your experience in collaborating? Talk about what steps you used to ensure the
+inputs from group members worked - code testing, GitHub branch management, etc. - and
+how you divided up the workload for the project.
+
+  Group members ran each other's code to check basic functionality. After being given the expected inputs, the code was checked for error handling by giving unexpected values as input to see if it was caught. Changes were made accordingly to ensure that the code didn't break with those unexpected inputs. The project was divided up into the following parts.
+
+Ryan - TCS
+Brian - EPS (Completed the Matlab requirement)
+Brandon - RCS/ACS
+Joshua - RSP/C&DH
+
+
+2. What was the most challenging section, and why? Feel free to provide more than one response
+if there is a difference of opinion in the group.
+
+  Joshua - The most difficult of the two subsystems was the Payload. It required several functions working together to combine the files, run conversions, generate, output and save the files while getting user input to ensure the correct files were fed into the program in the correct order. 
+
+
+
+3. If you employed Generative AI tools, how did you do so? Discuss which tools you used, the
+prompts you utilized, how you ensured the results were valid, and how you integrated the code
+into your tasks.
+
+  Joshua - Most of the usage from AI was from ChatGPT, and it was used to enhance the way the code was already written. For C&DH, I needed to verify that the loop that was running to catch if the input was within the parameters accepted values was correct and return an error if not. I tried to incorporate something into the Payload code that I had never used before. I used AI to enhance the image quality of the 8-bit image using the Scipy library.
+
+
+
+4. What other resources did you use to find solutions? Online sites, books, references, etc.
+
+Joshua - Any additional information that used came from previously written code, websites like W3Schools, and some of my Python books that I used to initially learn the language. 
+
+
+
+5. In what way could this project be improved for future quarters?
+
+Joshua - With six subsystems and four collaborators, maybe come up with two new subsystems so each person could work on two, and require that one be completed using Python and the other in Matlab. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
