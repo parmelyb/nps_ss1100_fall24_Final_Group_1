@@ -47,7 +47,7 @@ def load_band_data(file_path):
 def check_band_dimensions(R, G, B):
     #Check if the dimensions of the RGB bands are the same.
     if R.shape == G.shape == B.shape:
-        print("(Bands have the same dimensions) -> Proceeding To Stack")
+        print("[Bands have the same dimensions] -> Proceeding To Stack...")
     else:
         print(f"Band dimensions are different: R {R.shape}, G {G.shape}, B {B.shape}")
         return False
@@ -87,7 +87,7 @@ def rescale_to_dn(reflectance_image):
     reflectance_image = np.clip(reflectance_image, 0, 100)
     # Scale to the range [0, 255] and convert to uint8 (8-bit)
     dn_image = (reflectance_image * 20).astype(np.uint8)
-    print("-> Reflectance Image Rescaled To Digital Numbers...")
+    print("-> Reflectance Image Rescaled To 8-Bit Digital Numbers...")
     return dn_image
 
 
@@ -101,7 +101,7 @@ def apply_sharpening_filter(image):
     # Sharpen the image by increasing the contrast in high-gradient areas
     sharpened_image = image + gradient_magnitude * 0.3  # Increased sharpening strength
     sharpened_image = np.clip(sharpened_image, 0, 255)  # Ensure pixel values stay within range
-    print("-> Sharpening Digital Numbers Image...")
+    print("-> Sharpening 8-Bit Digital Numbers Image...")
     return sharpened_image.astype(np.uint8)  # Ensure the image is in uint8 format
 
 
@@ -154,7 +154,7 @@ def main():
         print(f"[Loading file from: {G_file}]")
         print("- Please select the ...(BLUE)... band file:")
         B_file = select_file()
-        print(f"[Loading file from: {B_file}]")
+        print(f"[Loading file from: {B_file}]\n")
     except Exception as e:
         print("GUI file dialog failed, falling back to manual input.")
         R_file = get_file_path("-> Please enter the path for the Red band file: ")
@@ -165,7 +165,7 @@ def main():
     R_data = load_band_data(R_file)
     G_data = load_band_data(G_file)
     B_data = load_band_data(B_file)
-    print("[Loading Band Data...]")
+    print("[[[Loading Band Data...]]]")
 
     if R_data is None or G_data is None or B_data is None:
         print("Error Loading Band Data. Exiting...")
@@ -208,12 +208,12 @@ def main():
 
             # Display and save the enhanced DN image
             save_image(dn_image_sharpened, 'dn_image_enhanced.png', folder_path)
-            print(f"*Both the Reflectance and Enhanced Digital Numbers Image Were Saved To: {folder_path}.*")
+            print(f"*Both the Reflectance and Enhanced 8-Bit Digital Numbers Image Were Saved To: {folder_path}.*")
 
             # Display the sharpened DN image
             plt.imshow(dn_image_sharpened)
-            plt.title("Enhanced Digital Numbers Image")
-            print("Enhanced Digital Numbers Image Displayed. -> ")
+            plt.title("Enhanced 8-Bit Digital Numbers Image")
+            print("Enhanced 8-Bit Digital Numbers Image Displayed. -> ")
             plt.show()
 
 
