@@ -115,6 +115,7 @@ def parse_command(command_str):
         raise ValueError(f"Invalid parameter value: '{param_value}' (must be a numeric type).")
 
     # Check if the parameter is within the allowed range/set
+    # Used ChatGPT to enhance my code to derive this check
     command_name, param_range = commands[command_code]
     if isinstance(param_range, tuple):
         min_val, max_val = param_range
