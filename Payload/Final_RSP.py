@@ -18,11 +18,9 @@ def select_file():
     file_path = filedialog.askopenfilename(title="Select a CSV file", filetypes=[("CSV Files", "*.csv")])
     return file_path
 
-
 def get_file_path(prompt="Enter file path:"):
     #Prompt the user to manually enter a file path.
     return input(prompt)
-
 
 def load_band_data(file_path):
     #Load band data from a CSV file, removing the first row and first column.
@@ -43,7 +41,6 @@ def load_band_data(file_path):
         print(f"Error loading the file {file_path}: {exc}")
         return None
 
-
 def check_band_dimensions(R, G, B):
     #Check if the dimensions of the RGB bands are the same.
     if R.shape == G.shape == B.shape:
@@ -53,13 +50,11 @@ def check_band_dimensions(R, G, B):
         return False
     return True
 
-
 def create_rgb_image(R, G, B):
     #Create an RGB image by stacking R, G, and B bands.
     rgb_image = np.stack((R, G, B), axis=-1)
     print("-> Stacking RGB Images...")
     return rgb_image
-
 
 def check_for_invalid_values(image):
     #Check and handle NaN (Not a Number) or Infinite values in the image.
