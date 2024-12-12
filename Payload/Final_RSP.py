@@ -20,7 +20,7 @@ def select_file():
 
 
 def get_file_path(prompt="Enter file path:"):
-    # Prompt the user to manually enter a file path.
+    # Prompt the user to manually enter a file path to ensure correct files are input in the correct order.
     return input(prompt)
 
 
@@ -62,7 +62,7 @@ def create_rgb_image(R, G, B):
     return rgb_image
 
 
-def check_for_invalid_values(image):
+def check_for_invalid_values(image): #These files are large and to avoid checking every cell for invalid characters and replacing them if necessary.
     # Check and handle NaN (Not a Number) or Infinite values in the image.
     if np.any(np.isnan(image)):
         print("Warning: Image contains NaN values!")
@@ -132,7 +132,7 @@ def apply_gamma_correction(image, gamma=1.2):
 
 #########################################################################################################
 
-def save_image(image, file_name, folder_path):
+def save_image(image, file_name, folder_path): #This code was pulled and compiled from previous code that I had written to save the files.
     # Save the image to a file.
     # Ensure the folder exists
     if not os.path.exists(folder_path):
@@ -203,6 +203,9 @@ def main():
             # Rescale the reflectance image to Digital Numbers (DN)
             dn_image = rescale_to_dn(reflectance_image)
 
+            #########################################################################################################
+            #This code was also part of what was pulled form ChatGPT using image sharpening techniques. 
+            
             # Apply histogram equalization to enhance contrast
             dn_image_equalized = histogram_equalization(dn_image)
 
@@ -211,7 +214,9 @@ def main():
 
             # Apply sharpening to enhance details
             dn_image_sharpened = apply_sharpening_filter(dn_image_gamma_corrected)
-
+            
+            #########################################################################################################
+            
             # Display and save the enhanced DN image
             save_image(dn_image_sharpened, 'dn_image_enhanced.png', folder_path)
             print(f"*Both the Reflectance and Enhanced 8-Bit Digital Numbers Image Were Saved To: {folder_path}.*")
