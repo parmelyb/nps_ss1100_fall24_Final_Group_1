@@ -54,13 +54,13 @@ into your tasks.
 
 4. What other resources did you use to find solutions? Online sites, books, references, etc.
 
-Joshua - Any additional information that used came from previously written code, websites like W3Schools, and some of my Python books that I used to initially learn the language. 
+  Joshua - Any additional information that used came from previously written code, websites like W3Schools, and some of my Python books that I used to initially learn the language. 
 
 
 
 5. In what way could this project be improved for future quarters?
 
-Joshua - With six subsystems and four collaborators, maybe come up with two new subsystems so each person could work on two, and require that one be completed using Python and the other in Matlab. 
+  Joshua - With six subsystems and four collaborators, maybe come up with two new subsystems so each person could work on two, and require that one be completed using Python and the other in Matlab. 
 
 
 
