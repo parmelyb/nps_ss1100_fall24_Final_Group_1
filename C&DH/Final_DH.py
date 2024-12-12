@@ -149,7 +149,6 @@ def test_predefined_inputs():
             print(f"Error parsing command '{test_input}': {e}")
     print("\n")
 
-# Get user input
 def get_user_input():
     print("Enter a command in the format 'Subsystem:CommandCode:Parameter' (e.g., 'EPS:CMD01:0'). Type 'exit' to quit.")
     while True:
