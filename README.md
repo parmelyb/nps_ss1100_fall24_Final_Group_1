@@ -32,7 +32,7 @@ how you divided up the workload for the project.
   Group members ran each other's code to check basic functionality. After being given the expected inputs, the code was checked for error handling by giving unexpected values as input to see if it was caught. Changes were made accordingly to ensure that the code didn't break with those unexpected inputs. The project was divided up into the following parts.
 
 Ryan - TCS
-Brian - EPS (Completed the Matlab requirement)
+Brian - EPS (Satisfies the Matlab requirement)
 Brandon - RCS/ACS
 Joshua - RSP/C&DH
 
