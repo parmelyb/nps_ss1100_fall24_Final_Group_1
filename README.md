@@ -54,7 +54,7 @@ into your tasks.
 
 4. What other resources did you use to find solutions? Online sites, books, references, etc.
 
-  Joshua - Any additional information that used came from previously written code, websites like W3Schools, and some of my Python books that I used to initially learn the language. 
+  Joshua - Any additional information that was used came from previously written code, websites like W3Schools, and some of my Python books that I used to initially learn the language. 
   Brian - I used homeworks/labs from this, and other classes, to reference and reuse applicable code.  For example, referenced previous work to remember the format of the "fprintf" function, and to refresh on effective uses of "FOR" loops and "IF/ELSEIF/ELSE" statements.
 
 
