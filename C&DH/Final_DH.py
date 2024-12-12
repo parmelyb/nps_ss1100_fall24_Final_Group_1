@@ -135,9 +135,9 @@ def parse_command(command_str):
 # Test the function with predefined test cases
 def test_predefined_inputs():
     test_inputs = [
-        "EPS:CMD01:0",  # Valid input
-        "ACS:CMD04:-1",  # Invalid: -1 is invalid for SAFE_MODE
-        "RCS:INVALID:0",  # Invalid: 'INVALID' is not a valid command code
+        "EPS:CMD01:0",  # Valid 
+        "ACS:CMD04:-1",  # Invalid
+        "RCS:INVALID:0",  # Invalid
     ]
 
     print("Testing predefined inputs:")
