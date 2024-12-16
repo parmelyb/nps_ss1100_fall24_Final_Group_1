@@ -11,9 +11,7 @@
 
 ### Question for Writeup
 
-## 1. What was your experience in collaborating? Talk about what steps you used to ensure the
-inputs from group members worked - code testing, GitHub branch management, etc. - and
-how you divided up the workload for the project.
+## 1. What was your experience in collaborating? Talk about what steps you used to ensure the inputs from group members worked - code testing, GitHub branch management, etc. - and how you divided up the workload for the project.
 
 Group members ran each other's code to check basic functionality. After being given the expected inputs, the code was checked for error handling by giving unexpected values as input to see if it was caught. Changes were made accordingly to ensure that the code didn't break with those unexpected inputs. The project was divided up into the following parts.
 
