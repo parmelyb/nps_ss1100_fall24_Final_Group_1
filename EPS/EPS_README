@@ -1,22 +1,22 @@
 # Run the EPS file as a MATLAB Live Editor file (.mlx).
--	The “EPS” code contains three functions, and one “For” loop.
--	The first function is used to determine Power (Watts), given a voltage (Volts) and current (Amperes).
--	The second function is used to determine Energy (Joules), given a Power (Watts) and Time (seconds).
--	The third function represents the spacecraft’s Electrical Power Subsystem (EPS), and incorporates the previous two functions.
+# The “EPS” code contains three functions, and one “For” loop.
+# The first function is used to determine Power (Watts), given a voltage (Volts) and current (Amperes).
+# The second function is used to determine Energy (Joules), given a Power (Watts) and Time (seconds).
+# The third function represents the spacecraft’s Electrical Power Subsystem (EPS), and incorporates the previous two functions.
 The EPS function addresses power supply and power conditioning, and utilizes Peak Power Tracking to optimize power output.
 The EPS takes input voltage and current, and modulates it to maintain peak voltage and current, and thus peak power.  The method of modulation
 (e.g. moving solar panels, rerouting power through circuitry that steps up/down voltage and/or current, etc.) is not addressed in this code/beyond
 the scope of this lab. Instead, the condition is noted via WARNINGS, CAUTIONS, and NOTES in the form of "fprintf" or "disp" functions; and includes
 the amount the voltage and current is being conditioned in order to return to peak output.  It is assumed that appropriate analog and/or digital
 conditioning is occurring after being noted by the code.
--	If any of the inputs are over the prescribed limits, a WARNING is posted, and the input is conditioned back to the prescribed limit.
--	If either input is zero, it is assumed that the system is functioning correctly, and the satellite is simply not receiving solar energy
+# If any of the inputs are over the prescribed limits, a WARNING is posted, and the input is conditioned back to the prescribed limit.
+# If either input is zero, it is assumed that the system is functioning correctly, and the satellite is simply not receiving solar energy
 (e.g. eclipse); however, a CAUTION is posted, so that operators (i.e. ground tracking station) are aware that the satellite is operating on battery power.
--	A negative value in any of the inputs assumes a malfunction of some sort, a WARNING posts, and a circuit breaker activates to stop
+# A negative value in any of the inputs assumes a malfunction of some sort, a WARNING posts, and a circuit breaker activates to stop
 electricity from flowing in the wrong direction and damaging equipment.
--	If the inputs are within limits, a NOTE is posted, along with the conditioning required to bring the inputs back to peak power output.
--	The EPS functions can work independently based on inputs in the format: (voltage, amperage, duration) [e.g. (28,10,3600)].
--	At the bottom of the code, a loop is included as a method to efficiently evaluate all of the inputs required in accordance with the
+# If the inputs are within limits, a NOTE is posted, along with the conditioning required to bring the inputs back to peak power output.
+# The EPS functions can work independently based on inputs in the format: (voltage, amperage, duration) [e.g. (28,10,3600)].
+# At the bottom of the code, a loop is included as a method to efficiently evaluate all of the inputs required in accordance with the
 "Check" and "Check Plus" directions.  All evaluation criteria was put into a matrix, with rows corresponding to an individual input, and columns
 according to the input format of (voltage, amperage, duration).  The result is a 11x3 matrix, that includes all inputs throughout the “Check” and
 “Check Plus” sections.  The loop also tracks total energy created across all time periods, and displays the final value at the bottom of the code output.
