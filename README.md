@@ -1,28 +1,13 @@
-# SS1100: Intro to Programming for Space Applications
-## Final Project: Programming Spacecraft Systems
-
-### Assignment
-- **Instructions**: Work in groups of four to complete the steps outlined in the project instructions.
-- **Submission**: All of your submission will go here in this repository, to include this README file to hold your writeup.
-
-### Procedure
-#### Preparation
-- Employ programming skills to solve problems related to spacecraft subsystems.
-- Develop code and responses to tasks in various sections.
-- Experience working with code and collaborating on a coding project.
-
-#### Requirements
-1. Complete all tasks listed in each section, paying attention to the Evaluation subsections.
-2. Use MatLab to complete at least one of the tasks.
-3. Submit the project using GitHub, replacing the content of this README file with your writeup and presentation of the work.
-
 #### Subsystems and Tasks
-Reaction Control Subsystem (RCS): Malfunction detection and velocity change calculation.\
-Thermal Control Subsystem (TCS): Temperature control function.\
-Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.\
-Command and Data Handling (C&DH): Command parsing and routing.\
-Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.\
-Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
+### Reaction Control Subsystem (RCS): Malfunction detection and velocity change calculation.\
+### Thermal Control Subsystem (TCS): Temperature control function.\
+### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.\
+### Command and Data Handling (C&DH): Command parsing and routing.\
+### Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.\
+![image](https://github.com/user-attachments/assets/a82463d3-7263-4f31-b5e1-fb4170af9db2)\
+![image](https://github.com/user-attachments/assets/c588f7e0-b2a8-4d0b-84d2-b1c71cd26fd3)\
+![image](https://github.com/user-attachments/assets/1d9887b7-3231-43b6-b6ae-54c8dd933309)\
+### Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
 
 
 1. What was your experience in collaborating? Talk about what steps you used to ensure the
