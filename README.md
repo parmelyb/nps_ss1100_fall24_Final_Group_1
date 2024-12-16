@@ -1,4 +1,3 @@
-#### Subsystems and Tasks
 ### Reaction Control Subsystem (RCS): Malfunction detection and velocity change calculation.
 ### Thermal Control Subsystem (TCS): Temperature control function.
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
