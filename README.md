@@ -29,7 +29,7 @@ Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and 
 inputs from group members worked - code testing, GitHub branch management, etc. - and
 how you divided up the workload for the project.
 
-  Group members ran each other's code to check basic functionality. After being given the expected inputs, the code was checked for error handling by giving unexpected values as input to see if it was caught. Changes were made accordingly to ensure that the code didn't break with those unexpected inputs. The project was divided up into the following parts.
+Group members ran each other's code to check basic functionality. After being given the expected inputs, the code was checked for error handling by giving unexpected values as input to see if it was caught. Changes were made accordingly to ensure that the code didn't break with those unexpected inputs. The project was divided up into the following parts.
 
 Ryan - TCS\
 Brian - EPS (Satisfies the Matlab requirement)\
@@ -40,7 +40,7 @@ Joshua - RSP/C&DH
 2. What was the most challenging section, and why? Feel free to provide more than one response
 if there is a difference of opinion in the group.
 
-Joshua - The most difficult of the two subsystems was the Payload. It required several functions working together to combine the files, run conversions, generate, output and save the files while getting user input to ensure the correct files were fed into the program in the correct order. Overall, completing both subsystems took me approximately 8 hours to complete.
+Joshua - The most difficult of the two subsystems was the Payload. It required several functions working together to combine the files, run conversions, generate, output and save the files while getting user input to ensure the correct files were fed into the program in the correct order. Overall, completing both subsystems took me approximately 8 hours to complete.\
 Brian - EPS was not a particularly challenging section, but I believe this was due primarily to the fact that Dr. MacDonald allowed some flexibility in the input format of the EPS data.  While I was able to follow the format (Voltage, Current, Time), the Check Plus section had a format [(V,I,T),(V,I,T),(V,I,T)].  Since we opted to do EPS in MATLAB, the tuple format was not ideal.  While I'm sure there was a way to force this data type, it would have been challenging, and likely would have consumed the vast majority of the programming/research time.  In order to meet the intent of the lab, I kept the (V,I,T) format for my EPS functions input variables, and for multiple data sets, I used a n x 3 matrix, where n is the number of inputs, and the 3 columns correspond to the input varible (V,I,T).
 
 
