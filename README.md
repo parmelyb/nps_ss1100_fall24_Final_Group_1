@@ -1,4 +1,6 @@
 ### Reaction Control Subsystem (RCS): Malfunction detection and velocity change calculation.
+Results from running the RCS python code are below.  Go to the RCS subfolder to access the full code with in-line descriptions.
+![image](https://github.com/user-attachments/assets/97d7cdb8-ed00-498e-9642-f1dcde02e745)\
 ### Thermal Control Subsystem (TCS): Temperature control function.
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
 ### Command and Data Handling (C&DH): Command parsing and routing.
