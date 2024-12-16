@@ -1,4 +1,4 @@
--	Run the EPS file as a MATLAB Live Editor file (.mlx).
+# Run the EPS file as a MATLAB Live Editor file (.mlx).
 -	The “EPS” code contains three functions, and one “For” loop.
 -	The first function is used to determine Power (Watts), given a voltage (Volts) and current (Amperes).
 -	The second function is used to determine Energy (Joules), given a Power (Watts) and Time (seconds).
