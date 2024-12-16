@@ -4,9 +4,9 @@
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
 ### Command and Data Handling (C&DH): Command parsing and routing.
 ### Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.
-![image](https://github.com/user-attachments/assets/a82463d3-7263-4f31-b5e1-fb4170af9db2)\
-![image](https://github.com/user-attachments/assets/c588f7e0-b2a8-4d0b-84d2-b1c71cd26fd3)\
-![image](https://github.com/user-attachments/assets/1d9887b7-3231-43b6-b6ae-54c8dd933309)\
+![image](https://github.com/user-attachments/assets/a82463d3-7263-4f31-b5e1-fb4170af9db2)
+![image](https://github.com/user-attachments/assets/c588f7e0-b2a8-4d0b-84d2-b1c71cd26fd3)
+![image](https://github.com/user-attachments/assets/1d9887b7-3231-43b6-b6ae-54c8dd933309)
 ### Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
 
 
