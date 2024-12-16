@@ -3,6 +3,9 @@ Results from running the RCS python code are below.  Go to the RCS subfolder to 
 ![image](https://github.com/user-attachments/assets/97d7cdb8-ed00-498e-9642-f1dcde02e745)\
 ### Thermal Control Subsystem (TCS): Temperature control function.
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
+Results from running the ADC python code are below.  Go to the ADC subfolder to access the full code with in-line descriptions.
+![image](https://github.com/user-attachments/assets/876d8662-8945-41d6-933b-fa5b7cd9bc4e)\
+
 ### Command and Data Handling (C&DH): Command parsing and routing.
 ### Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.
 Results from running the EPS.mlx file are below.  Go to the EPS subfolder to access the full code with in-line descriptions, and the EPS README file.\
