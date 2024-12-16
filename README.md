@@ -3,7 +3,7 @@
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
 ### Command and Data Handling (C&DH): Command parsing and routing.
 ### Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.
-Results from running the EPS.mlx file are below.  Got the EPS subfolder to access the full code with inline descriptors, and the EPS README file.
+Results from running the EPS.mlx file are below.  Go to the EPS subfolder to access the full code with in-line descriptions, and the EPS README file.
 ![image](https://github.com/user-attachments/assets/9c4561f0-6da2-4101-8ead-e5824722fed9)
 ![image](https://github.com/user-attachments/assets/0a236856-da27-4c25-9a09-11192cf51d4e)
 ### Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
