@@ -2,6 +2,9 @@
 Results from running the RCS python code are below.  Go to the RCS subfolder to access the full code with in-line descriptions.
 ![image](https://github.com/user-attachments/assets/97d7cdb8-ed00-498e-9642-f1dcde02e745)\
 ### Thermal Control Subsystem (TCS): Temperature control function.
+Results for running TCS function with the thermal_control.py code in IDLE Shell . Full code in TCS folder (final_TCS).
+![image](https://github.com/user-attachments/assets/cefea652-e929-45e4-b440-80964147639b)
+
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
 Results from running the ADC python code are below.  Go to the ADC subfolder to access the full code with in-line descriptions.
 ![image](https://github.com/user-attachments/assets/876d8662-8945-41d6-933b-fa5b7cd9bc4e)\
@@ -12,7 +15,6 @@ Results from running the EPS.mlx file are below.  Go to the EPS subfolder to acc
 ![image](https://github.com/user-attachments/assets/9c4561f0-6da2-4101-8ead-e5824722fed9)\
 ![image](https://github.com/user-attachments/assets/0a236856-da27-4c25-9a09-11192cf51d4e)\
 ### Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
-
 
 ### Question for Writeup
 
