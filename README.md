@@ -15,6 +15,8 @@ Results from running the EPS.mlx file are below.  Go to the EPS subfolder to acc
 ![image](https://github.com/user-attachments/assets/9c4561f0-6da2-4101-8ead-e5824722fed9)\
 ![image](https://github.com/user-attachments/assets/0a236856-da27-4c25-9a09-11192cf51d4e)\
 ### Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
+Results from running the RSP python code are below. Go to the Payload subfolder to access the full code with in-line descriptions.
+![image](https://github.com/user-attachments/assets/ecb2919b-4825-4a3e-8ac7-30384988409b)
 
 ### Question for Writeup
 
