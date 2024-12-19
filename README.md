@@ -1,21 +1,24 @@
 ### Reaction Control Subsystem (RCS): Malfunction detection and velocity change calculation.
-Results from running the RCS python code are below.  Go to the RCS subfolder to access the full code with in-line descriptions.
+Results from running the RCS python code are below.  Go to the RCS subfolder to access the full code with in-line descriptions.\
 ![image](https://github.com/user-attachments/assets/97d7cdb8-ed00-498e-9642-f1dcde02e745)\
 ### Thermal Control Subsystem (TCS): Temperature control function.
 Results for running TCS function with the thermal_control.py code in IDLE Shell . Full code in TCS folder (final_TCS).
 ![image](https://github.com/user-attachments/assets/cefea652-e929-45e4-b440-80964147639b)
 
 ### Attitude Control Subsystem (ACS): Attitude determination and rotation calculations.
-Results from running the ADC python code are below.  Go to the ADC subfolder to access the full code with in-line descriptions.
+Results from running the ADC python code are below.  Go to the ADC subfolder to access the full code with in-line descriptions.\
 ![image](https://github.com/user-attachments/assets/876d8662-8945-41d6-933b-fa5b7cd9bc4e)\
 
 ### Command and Data Handling (C&DH): Command parsing and routing.
+Results from running the CDH python code are below.  Go to the C&DH subfolder to access the full code with in-line descriptions.\
+![image](https://github.com/user-attachments/assets/cd11fc4e-0e45-4369-b420-9473f1cb3be5)\
+
 ### Electrical Power Subsystem (EPS): Power budget analysis and battery charging calculations.
 Results from running the EPS.mlx file are below.  Go to the EPS subfolder to access the full code with in-line descriptions, and the EPS README file.\
 ![image](https://github.com/user-attachments/assets/9c4561f0-6da2-4101-8ead-e5824722fed9)\
 ![image](https://github.com/user-attachments/assets/0a236856-da27-4c25-9a09-11192cf51d4e)\
 ### Remote Sensing Payload: Data ingestion, radiance to reflectance conversion, and image rescaling.
-Results from running the RSP python code are below. Go to the Payload subfolder to access the full code with in-line descriptions.
+Results from running the RSP python code are below. Go to the Payload subfolder to access the full code with in-line descriptions.\
 ![image](https://github.com/user-attachments/assets/ecb2919b-4825-4a3e-8ac7-30384988409b)
 
 ### Question for Writeup
