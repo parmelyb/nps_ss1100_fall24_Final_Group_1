@@ -1,6 +1,9 @@
 # SS1100: Intro to Programming for Space Applications
 ## Final Project: Programming Spacecraft Systems
 
+### McCowan	Neri	Loughran	Parmely
+
+
 ### Assignment
 - **Instructions**: Work in groups of four to complete the steps outlined in the project instructions.
 - **Submission**: All of your submission will go here in this repository, to include this README file to hold your writeup.
