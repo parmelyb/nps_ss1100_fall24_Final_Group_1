@@ -58,12 +58,30 @@ Brian - I used homeworks/labs from this, and other classes, to reference and reu
 
 
 
+# Instructor Comments
 
+In some of your scripts, your code extends far to the right. Python recommends you keep all lines less than 80 characters long. This will help with readability and troubleshooting, since when the code extends off the screen (depending on your zoom level / screen size) it makes it hard to see everything going on.
 
+### ADC
+Great use of a Class to hold all of the steps for the ADC calculations and rotation. Only real issue is that the instructions specified using the rotate_me.py script to effect the changes, while your submitted script only can run the three hard-coded examples you included. My guess is that you GenAI program didn't understand that you had that rotate_me.py file, and essentially made a new one (internally) that replicated much of the functionaliy. Still, the code itself is great and it seems like you had a good experience working with the AttitudeControlSystem Class.
 
+### C&DH
+In your Final_DH.py script, you have a few actions that repeat that are hard coded each time. For example, when you unpack "command_str.split(':')" into its three expected elements, at the same time you could perform the ".strip().upper()" actions on the first two elements. You could also consolidate all of the error checking in the script into that first block, rejecting it and exiting early if any of the conditions aren't met.
+Good use of string methods to clean up the data, particularly ".upper()" to enforce consistency - shows you understand that while "A" and "a" are essentially the same to a human, they are two explicitly different UTF/ASCII characters that a computer treats differently, and would create an error if compared in a boolean operation.
 
+### EPS
+Good use of Matlab.
 
+### Payload
+I'm not familiar with the tkinter package. Looks like it's a GUI to select files, which you could also have done programmatically. Part of your check_for_invalid_values function, while interesting, identically replicates the .clip() method you use in the next function. Any values outside of the [0,255] range would be set to 0 or 255 based on their magnitude. Further, your rescale_to_dn function also does a clip operation, but this time it likely loses information as it sets anything greater than 100 to that max value. 
 
+Unfortunately, you actually have these two operations reversed: a reflectance image should be between [0,1] and a DN image should be in that [0,255] range - your script has the opposite. All of this is just to say, it's great to use ChatGPT but I think it gave you a more complicated set of code than it needed to, and the complexity might have made it hard to keep track of what was going on.
+
+### RCS
+In your main() function, you have all of your test cases built individually. The more "programmatic" way to do this would have been to make your function generic, then run it three times on the data. 
+
+### Github
+I ended up merging your branch back into Main to make sure all the code was at the top of the repository. We didn't really cover Github enough, but good job attempting to use the branch to try stuff out before publishing it.
 
 
 
